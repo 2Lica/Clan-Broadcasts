@@ -267,17 +267,17 @@ public class ClanBroadcastsPlugin extends Plugin
 	{
 		try
 		{
-			// Account type icons
+			// Account type icons (take precedence)
 			switch (client.getAccountType())
 			{
 				case IRONMAN:
-					return "/icons/ironman.png";
+					return "https://raw.githubusercontent.com/2Lica/Clan-Broadcasts/master/src/main/resources/icons/Ironman_chat_badge.png";
 				case HARDCORE_IRONMAN:
-					return "/icons/hardcore_ironman.png";
+					return "https://raw.githubusercontent.com/2Lica/Clan-Broadcasts/master/src/main/resources/icons/Hardcore_ironman_chat_badge.png";
 				case ULTIMATE_IRONMAN:
-					return "/icons/ultimate_ironman.png";
+					return "https://raw.githubusercontent.com/2Lica/Clan-Broadcasts/master/src/main/resources/icons/Ultimate_ironman_chat_badge.png";
 				case GROUP_IRONMAN:
-					return "/icons/Group_ironman_chat_badge.png";
+					return "https://raw.githubusercontent.com/2Lica/Clan-Broadcasts/master/src/main/resources/icons/Group_ironman_chat_badge.png";
 				default:
 					break;
 			}
@@ -286,26 +286,43 @@ public class ClanBroadcastsPlugin extends Plugin
 			ClanMember member = client.getClanSettings().findMember(username);
 			if (member != null)
 			{
-				int rank = member.getRank().getRank(); // use getRank() for integer comparison
+				int rank = member.getRank().getRank();
 
-				if (rank == ClanRank.JMOD.getRank())
-					return "/icons/Clan_icon_-_Moderator.png";
-				else if (rank == ClanRank.OWNER.getRank())
-					return "/icons/Clan_icon_-_Owner.png";
-				else if (rank == ClanRank.DEPUTY_OWNER.getRank())
-					return "/icons/Clan_icon_-_Deputy_owner.png";
-				else if (rank == ClanRank.ADMINISTRATOR.getRank())
-					return "/icons/Clan_icon_-_Administrator.png";
-				else if (rank == ClanRank.GUEST.getRank())
-					return null; // guest has no icon
-				else
-					return "/icons/Clan_icon_-_Pawn.png"; // default member icon
+				switch (rank)
+				{
+					case 127: return "https://raw.githubusercontent.com/2Lica/Clan-Broadcasts/master/src/main/resources/icons/Clan_icon_-_Moderator.png";
+					case 126: return "https://raw.githubusercontent.com/2Lica/Clan-Broadcasts/master/src/main/resources/icons/Clan_icon_-_Owner.png";
+					case 125: return "https://raw.githubusercontent.com/2Lica/Clan-Broadcasts/master/src/main/resources/icons/Clan_icon_-_Deputy_owner.png";
+					case 100: return "https://raw.githubusercontent.com/2Lica/Clan-Broadcasts/master/src/main/resources/icons/Clan_icon_-_Administrator.png";
+					case 50:  return "https://raw.githubusercontent.com/2Lica/Clan-Broadcasts/master/src/main/resources/icons/Clan_icon_-_Officer.png";
+					case 17:  return "https://raw.githubusercontent.com/2Lica/Clan-Broadcasts/master/src/main/resources/icons/Clan_icon_-_Marshal.png";
+					case 16:  return "https://raw.githubusercontent.com/2Lica/Clan-Broadcasts/master/src/main/resources/icons/Clan_icon_-_Admiral.png";
+					case 15:  return "https://raw.githubusercontent.com/2Lica/Clan-Broadcasts/master/src/main/resources/icons/Clan_icon_-_Brigadier.png";
+					case 14:  return "https://raw.githubusercontent.com/2Lica/Clan-Broadcasts/master/src/main/resources/icons/Clan_icon_-_Colonel.png";
+					case 13:  return "https://raw.githubusercontent.com/2Lica/Clan-Broadcasts/master/src/main/resources/icons/Clan_icon_-_Commander.png";
+					case 12:  return "https://raw.githubusercontent.com/2Lica/Clan-Broadcasts/master/src/main/resources/icons/Clan_icon_-_Master.png"; // Master Officer
+					case 11:  return "https://raw.githubusercontent.com/2Lica/Clan-Broadcasts/master/src/main/resources/icons/Clan_icon_-_General.png";
+					case 10:  return "https://raw.githubusercontent.com/2Lica/Clan-Broadcasts/master/src/main/resources/icons/Clan_icon_-_Major.png";
+					case 9:   return "https://raw.githubusercontent.com/2Lica/Clan-Broadcasts/master/src/main/resources/icons/Clan_icon_-_Captain.png";
+					case 8:   return "https://raw.githubusercontent.com/2Lica/Clan-Broadcasts/master/src/main/resources/icons/Clan_icon_-_Cadet.png"; // Proselyte placeholder
+					case 7:   return "https://raw.githubusercontent.com/2Lica/Clan-Broadcasts/master/src/main/resources/icons/Clan_icon_-_Lieutenant.png";
+					case 6:   return "https://raw.githubusercontent.com/2Lica/Clan-Broadcasts/master/src/main/resources/icons/Clan_icon_-_Cadet.png";
+					case 5:   return "https://raw.githubusercontent.com/2Lica/Clan-Broadcasts/master/src/main/resources/icons/Clan_icon_-_Sergeant.png";
+					case 4:   return "https://raw.githubusercontent.com/2Lica/Clan-Broadcasts/master/src/main/resources/icons/Clan_icon_-_Novice.png";
+					case 3:   return "https://raw.githubusercontent.com/2Lica/Clan-Broadcasts/master/src/main/resources/icons/Clan_icon_-_Corporal.png";
+					case 2:   return "https://raw.githubusercontent.com/2Lica/Clan-Broadcasts/master/src/main/resources/icons/Clan_icon_-_Pawn.png"; // Private
+					case 1:   return "https://raw.githubusercontent.com/2Lica/Clan-Broadcasts/master/src/main/resources/icons/Clan_icon_-_Pawn.png"; // Recruit / Pawn
+					case -1:  return "https://raw.githubusercontent.com/2Lica/Clan-Broadcasts/master/src/main/resources/icons/Unranked_group_ironman_chat_badge.png"; // Guest / Unranked
+					default:  return "https://raw.githubusercontent.com/2Lica/Clan-Broadcasts/master/src/main/resources/icons/Clan_icon_-_Pawn.png"; // fallback
+				}
 			}
 		}
 		catch (Exception e)
 		{
 			log.debug("No icon found for {}", username, e);
 		}
+
+		// Fallback if no account type and no clan rank
 		return null;
 	}
 }
