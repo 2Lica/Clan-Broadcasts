@@ -42,5 +42,4 @@ Easy to configure your settings in RuneLite:
 ![img_1.png](img_1.png)
 ---
 
-## 📜 License
-MIT License — free to use and share.  
+ 
