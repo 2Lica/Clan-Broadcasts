@@ -38,6 +38,7 @@ Easy to configure your settings in RuneLite:
 - Easy setup with just a few webhook links
 
 ![img.png](img.png)
+
 ![img_1.png](img_1.png)
 ---
 
