@@ -4,63 +4,24 @@ import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 
-@ConfigGroup("clanbroadcasts")
+@ConfigGroup("clanBroadcasts")
 public interface ClanBroadcastsConfig extends Config
 {
 	@ConfigItem(
-			keyName = "levelWebhook",
-			name = "Level-up Webhook",
-			description = "Discord webhook URL for level-up messages"
+			keyName = "groupId",
+			name = "WOM Group ID",
+			description = "The Wise Old Man group ID for your clan"
 	)
-	default String levelWebhook()
+	default int groupId()
 	{
-		return "";
+		return 0;
 	}
 
+	// ------------------ Webhooks ------------------
 	@ConfigItem(
-			keyName = "cofferWebhook",
-			name = "Clan Coffer Webhook",
-			description = "Discord webhook URL for coffer messages"
-	)
-	default String cofferWebhook()
-	{
-		return "";
-	}
-
-	@ConfigItem(
-			keyName = "questWebhook",
-			name = "Quest Webhook",
-			description = "Discord webhook URL for quest completions"
-	)
-	default String questWebhook()
-	{
-		return "";
-	}
-
-	@ConfigItem(
-			keyName = "lootWebhook",
-			name = "Loot/Kill Webhook",
-			description = "Discord webhook URL for loot or kill events"
-	)
-	default String lootWebhook()
-	{
-		return "";
-	}
-
-	@ConfigItem(
-			keyName = "diaryWebhook",
-			name = "Achievement Diary Webhook",
-			description = "Discord webhook URL for diary completions"
-	)
-	default String diaryWebhook()
-	{
-		return "";
-	}
-
-	@ConfigItem(
-			keyName = "generalWebhook",
+			keyName = "webhookGeneral",
 			name = "General Webhook",
-			description = "Discord webhook URL for miscellaneous clan events"
+			description = "Webhook for General broadcasts"
 	)
 	default String generalWebhook()
 	{
@@ -68,22 +29,92 @@ public interface ClanBroadcastsConfig extends Config
 	}
 
 	@ConfigItem(
-			keyName = "sendScreenshot",
-			name = "Send Screenshot",
-			description = "Include a screenshot with each event"
+			keyName = "webhookValuableDrops",
+			name = "Valuable Drops Webhook",
+			description = "Webhook for Valuable Drops category"
 	)
-	default boolean sendScreenshot()
+	default String webhookValuableDrops()
 	{
-		return true;
+		return "";
 	}
 
 	@ConfigItem(
-			keyName = "fullClientScreenshot",
-			name = "Full Client Screenshot",
-			description = "Capture the full game client window instead of just the chatbox"
+			keyName = "webhookCollectionLog",
+			name = "Collection Log Webhook",
+			description = "Webhook for Collection Log category"
 	)
-	default boolean fullClientScreenshot()
+	default String webhookCollectionLog()
 	{
-		return true;
+		return "";
+	}
+
+	@ConfigItem(
+			keyName = "webhookPets",
+			name = "Pets Webhook",
+			description = "Webhook for Pets category"
+	)
+	default String webhookPets()
+	{
+		return "";
+	}
+
+	@ConfigItem(
+			keyName = "webhookPVM",
+			name = "PVM Webhook",
+			description = "Webhook for PVM category"
+	)
+	default String webhookPVM()
+	{
+		return "";
+	}
+
+	@ConfigItem(
+			keyName = "webhookPVP",
+			name = "PVP Webhook",
+			description = "Webhook for PVP category"
+	)
+	default String webhookPVP()
+	{
+		return "";
+	}
+
+	@ConfigItem(
+			keyName = "webhookLevel",
+			name = "Level Webhook",
+			description = "Webhook for Level-ups and XP broadcasts"
+	)
+	default String webhookLevel()
+	{
+		return "";
+	}
+
+	@ConfigItem(
+			keyName = "webhookQuests",
+			name = "Quests and Achievement Diary Webhook",
+			description = "Webhook for Quests and Achievement Diary category"
+	)
+	default String webhookQuests()
+	{
+		return "";
+	}
+
+	@ConfigItem(
+			keyName = "webhook99sAndCapes",
+			name = "99s and Capes Webhook",
+			description = "Webhook for 99s and Capes category"
+	)
+	default String webhook99sAndCapes()
+	{
+		return "";
+	}
+
+	@ConfigItem(
+			keyName = "webhookClansCoffer",
+			name = "Clan's Coffer Webhook",
+			description = "Webhook for Clan's Coffer deposits and withdrawals"
+	)
+	default String webhookClansCoffer()
+	{
+		return "";
 	}
 }
